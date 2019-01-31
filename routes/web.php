@@ -23,10 +23,12 @@ Route::any('bienvenida', function () {
     return "Esta es la url: $url";
 });
 
-Route::any('post/{id?}', function ($id = null) {
-    if ($id == null) {
-        return "No se ha especificado id";
-    } else {
-        return "Post $id";
-    }
-});
+Route::get('post/{id}', [
+    'uses' => 'PostController@show'
+]);
+
+Route::post('post/store', [
+    'middleware' => ['auth', 'age'],
+    'uses' => 'PostController@store'
+]);
+
