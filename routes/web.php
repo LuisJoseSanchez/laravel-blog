@@ -14,9 +14,7 @@
 Route::pattern('id', '\d+');
 Route::pattern('hex', '[a-f0-9]+');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PostController@index');
 
 Route::any('bienvenida', function () {
     $url = url('bienvenida');
@@ -28,7 +26,18 @@ Route::get('post/{id}', [
 ]);
 
 Route::post('post/store', [
-    'middleware' => ['auth', 'age'],
+    'middleware' => 'auth',
+    'before' => 'csrf',
     'uses' => 'PostController@store'
+]);
+
+Route::post('post/update/{id}', [
+    'middleware' => 'auth',
+    'before' => 'csrf',
+    'uses' => 'PostController@update'
+]);
+
+Route::get('post/delete/{id}', [
+    'uses' => 'PostController@destroy'
 ]);
 
