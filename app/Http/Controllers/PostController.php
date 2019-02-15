@@ -14,7 +14,7 @@ class PostController extends Controller
 
     public function index() {
         $posts = Post::all();
-        return $posts->toJson();
+        return view('blog.index', compact('posts'));
     }
 
     public function show($id) {
