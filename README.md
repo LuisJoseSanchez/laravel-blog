@@ -10,10 +10,13 @@ This is a typical Blog made with Laravel framework. It is my first project with 
 sudo apt install php
 ```
 
-### Install ext-zip extension
+### Install required extensions
 
 ```console
 sudo apt install php-zip
+sudo apt install php-json
+sudo apt install php-dom
+sudo apt install php-mbstring
 ```
 
 ### Install Composer
